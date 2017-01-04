@@ -21,10 +21,10 @@
 320 yct%=(400-y%+20)/16:ycd%=(400-y%+8)/16
 330 xcl%=(x%+32)/32:xcr%=(x%+16)/32
 400 'LOCATE 1,14: PRINT walk 'debug
-600 IF NOT(INKEY(8)) AND ((TEST(x%-8,y%-6)<>9) AND (TEST(x%-8,y%-14)<>9)) THEN GOSUB 5000:frcount=2:x%=x%-vx%:GOSUB 5000
-700 IF NOT(INKEY(1)) AND ((TEST(x%+32,y%-6)<>9) AND (TEST(x%+32,y%-14)<>9)) THEN GOSUB 5000:frcount=1:x%=x%+vx%:GOSUB 5000
-800 IF NOT(INKEY(0)) AND ((TEST(x%,y%+2)<>9) AND (TEST(x%+28,y%+2)<>9)) AND walk=1 THEN GOSUB 5000:y%=y%+vy%:GOSUB 5000
-900 IF NOT(INKEY(2)) AND ((TEST(x%,y%-18)<>9) AND (TEST(x%+20,y%-18)<>9)) THEN GOSUB 5000:y%=y%-vy%:GOSUB 5000
+600 IF NOT(INKEY(8)) THEN IF (TEST(x%-8,y%-6)<>9) THEN IF (TEST(x%-8,y%-14)<>9) THEN GOSUB 5000:frcount=2:x%=x%-vx%:GOSUB 5000
+700 IF NOT(INKEY(1)) THEN IF (TEST(x%+32,y%-6)<>9) THEN IF (TEST(x%+32,y%-14)<>9) THEN GOSUB 5000:frcount=1:x%=x%+vx%:GOSUB 5000
+800 IF NOT(INKEY(0)) THEN IF (TEST(x%,y%+2)<>9) THEN IF (TEST(x%+28,y%+2)<>9) THEN IF walk=1 THEN GOSUB 5000:y%=y%+vy%:GOSUB 5000
+900 IF NOT(INKEY(2)) THEN IF (TEST(x%,y%-18)<>9) THEN IF (TEST(x%+20,y%-18)<>9) THEN GOSUB 5000:y%=y%-vy%:GOSUB 5000
 950 IF map%(ycd%+1,xcl%)=0 THEN walk=0:GOSUB 5000:y%=y%-vy%:GOSUB 5000 ELSE walk=1
 1000 IF map%(ycd%,xcl%)=3 THEN map%(ycd%,xcl%)=0:LOCATE xcl%,ycd%:PRINT" ";:MOVE x%,y%:TAG:PRINT" ";:TAGOFF:GOSUB 5000:LOCATE 1,12:sc%=sc%+1:PRINT sc%
 1010 'TAG:MOVE 32,400-32:PRINT CHR$(247);:TAGOFF
